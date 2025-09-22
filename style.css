@@ -378,9 +378,6 @@ footer {
     top: auto !important;
     padding: 10px 0;
   }
-  .navbar {
-    padding: 10px 0;
-  }
   .nav-container {
     flex-direction: column;
     align-items: center;
@@ -428,8 +425,9 @@ footer {
   }
   #main-image {
     width: 100%;
+    max-width: 250px;
     height: auto;
-    max-width: 350px;
+    margin: 0;
   }
   .thumbnail {
     width: 60px;
@@ -448,19 +446,17 @@ footer {
     padding: 10px;
   }
   .image-gallery {
-    max-width: 350px;
-    margin: 0 auto 20px auto;
-    padding: 0 0;
-  }
-  #main-image {
-    width: 100%;
     max-width: 250px;
-    height: auto;
-    margin: 0 0;
+    margin: 0 auto 20px auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
   }
   .nav-btn {
-    font-size: 1.5rem;
-    padding: 0 5px;
+    font-size: 1.2rem;
+    padding: 0 2px;
   }
 }
 
