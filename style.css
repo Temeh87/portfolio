@@ -447,6 +447,21 @@ footer {
     max-width: 100%;
     padding: 10px;
   }
+  .image-gallery {
+    max-width: 350px;
+    margin: 0 auto 20px auto;
+    padding: 0 0;
+  }
+  #main-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 0 0;
+  }
+  .nav-btn {
+    font-size: 1.5rem;
+    padding: 0 5px;
+  }
 }
 
 
