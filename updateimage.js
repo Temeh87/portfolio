@@ -32,5 +32,37 @@ document.addEventListener('DOMContentLoaded', function() {
     updateMainImage(newIndex);
   });
 
+  // Swipe-toiminnallisuus
+  let startX = 0;
+
+  function showImage(index) {
+    mainImage.src = thumbnails[index].src;
+    thumbnails.forEach((thumb, i) => {
+      thumb.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+  }
+
+  // Kosketuksen alku
+  mainImage.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+  });
+
+  // Kosketuksen loppu
+  mainImage.addEventListener('touchend', function(e) {
+    let endX = e.changedTouches[0].clientX;
+    if (endX < startX - 30) {
+      // Swipe vasemmalle (seuraava kuva)
+      if (currentIndex < thumbnails.length - 1) {
+        showImage(currentIndex + 1);
+      }
+    } else if (endX > startX + 30) {
+      // Swipe oikealle (edellinen kuva)
+      if (currentIndex > 0) {
+        showImage(currentIndex - 1);
+      }
+    }
+  });
+
   updateMainImage(0);
 });
