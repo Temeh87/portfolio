@@ -375,13 +375,17 @@ footer {
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;      /* keskittää logon ja valikon */
     padding: 0 10px;
+  }
+  .nav-logo {
+    margin-bottom: 10px;      /* lisää tilaa logon ja valikon väliin */
   }
   .nav-menu {
     flex-direction: column;
     gap: 10px;
     width: 100%;
+    align-items: center;      /* keskittää valikon linkit */
   }
   .hero {
     padding: 50px 10px;
