@@ -374,8 +374,9 @@ footer {
 
 @media (max-width: 768px) {
   .navbar {
-    position: static;
-    top: auto;
+    position: static !important;
+    top: auto !important;
+    padding: 10px 0;
   }
   .navbar {
     padding: 10px 0;
