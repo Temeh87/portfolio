@@ -397,6 +397,7 @@ footer {
   }
   .card,
   .project-card {
+    text-align: left;
     width: 100%;
     max-width: 350px;
     margin: auto;
