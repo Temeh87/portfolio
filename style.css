@@ -374,6 +374,10 @@ footer {
 
 @media (max-width: 768px) {
   .navbar {
+    position: static;
+    top: auto;
+  }
+  .navbar {
     padding: 10px 0;
   }
   .nav-container {
