@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teemu Koivuniemi - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigaatio -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Teemu Koivuniemi</a>
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link">Etusivu</a></li>
+        <li><a href="#about" class="nav-link">Tietoja</a></li>
+        <li><a href="projects.html" class="nav-link">Projektit</a></li>
+        <li><a href="#contact" class="nav-link">Yhteystiedot</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Hero-osio videolla -->
+<section class="hero" id="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="videos/hero_video.mp4" type="video/mp4">
+    Selaimesi ei tue videota.
+  </video>
+  <div class="hero-bg">
+    <h1>Hei, olen Teemu Koivuniemi</h1>
+    <p>Tietotekniikan insinööriopiskelija – elektroniikkaa, ohjelmointia ja 3D-tulostusta.</p>
+    <div class="hero-buttons">
+      <a href="projects.html" class="btn btn-primary">Katso kaikki projektit</a>
+      <a href="#contact" class="btn btn-outline">Ota yhteyttä</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="about">
+  <div class="container about-wrap">
+    <div class="about-block">
+      <img src="images/router1.jpg" class="about-img" alt="Elektroniikka">
+      <div class="about-text">
+        <h3>Elektroniikka</h3>
+        <p>Kirjoita vapaamuotoisesti esimerkiksi komponenteista, mikrokontrollereista, piirilevyistä ja elektroniikkaprojekteista joita olet tehnyt.</p>
+      </div>
+    </div>
+
+    <div class="about-block reverse">
+      <img src="images/router1.jpg" class="about-img" alt="Koodaus">
+      <div class="about-text">
+        <h3>Koodaus</h3>
+        <p>Kirjoita vapaamuotoisesti esimerkiksi mitä kieliä osaat, mitä sovelluksia tai projekteja olet tehnyt ja mitä osa-alueita ohjelmoinnissa haluat kehittää.</p>
+      </div>
+    </div>
+
+    <div class="about-block">
+      <img src="images/router1.jpg" class="about-img" alt="3D-mallinnus">
+      <div class="about-text">
+        <h3>3D-mallinnus</h3>
+        <p>Kirjoita vapaamuotoista tekstiä…</p>
+      </div>
+    </div>
+
+    <div class="about-block reverse">
+      <img src="images/router1.jpg" class="about-img" alt="3D-tulostus">
+      <div class="about-text">
+        <h3>3D-tulostus</h3>
+        <p>Kirjoita tähän vapaamuotoisesti…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tietoa tästä sivusta -->
+<section class="section" id="site-info">
+  <div class="container">
+    <h2>Tietoa tästä sivusta</h2>
+    <div class="site-info-box">
+      <p>
+        Tämä portfolio-sivusto on toteutettu puhtaasti <strong>HTML</strong> ja <strong>CSS</strong> -tekniikoilla ilman valmiita sivupohjia. 
+        Sivusto on hostattu <strong>GitHub Pagesin</strong> kautta ja sen tarkoitus on esitellä projektini ja osaamiseni 
+        työnhakua sekä harrastuksia varten.
+      </p>
+      <p>
+        Olen halunnut pitää sivun selkeänä, yksinkertaisena ja helposti päivitettävänä. 
+        Kaikki koodi löytyy omasta GitHub-repostani.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Projektinäytteet -->
+  <section class="projects">
+    <h2 class="project-category">Projektinäytteet</h2>
+    <div class="hero-projects">
+      <a href="smars.html" class="project-card">
+        <img src="images/projekti2_1.jpg" alt="SMARS-botti">
+        <h3>SMARS-botti</h3>
+        <p><strong>02/2025</strong><br> Ensimmäinen Arduino-projektini.</p>
+      </a>
+      <a href="router.html" class="project-card">
+        <img src="images/router1.jpg" alt="Reitittimen seinäkiinnike">
+        <h3>Seinäkiinnike</h3>
+        <p><strong>08/2025</strong><br> 3D-tulostettu seinäkiinnike reitittimelle.</p>
+      </a>
+      <a href="projects.html" class="project-card">
+        <img src="images/more.jpg" alt="Lisää projekteja">
+        <h3>Katso lisää projekteja</h3>
+        <p>Kaikki projektini löydät projektit-sivulta.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Yhteystiedot-osio -->
+  <section class="contact" id="contact">
+    <h2>Yhteystiedot</h2>
+    <p class="contact-email">
+      Voit lähettää viestin alla olevalla lomakkeella tai sähköpostitse:  
+      <a href="mailto:teemu.p.koivuniemi@gmail.com">teemu.p.koivuniemi@gmail.com</a>
+    </p>
+
+    <form action="https://formspree.io/f/mqalyrlp" method="POST">
+      <input type="text" name="nimi" placeholder="Nimi" required>
+      <input type="email" name="sahkoposti" placeholder="Sähköposti" required>
+      <textarea name="viesti" placeholder="Viesti" required></textarea>
+      <button type="submit" class="submit-button">Lähetä viesti</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
+  </footer>
+</body>
+</html>
