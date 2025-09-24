@@ -597,5 +597,28 @@ a.inline-link:hover {
     border-top: 3px solid #2196F3; /* pieni korostus kuvan ja tekstin väliin */
   }
 }
+@media screen and (max-width: 920px) {
+  .about-block,
+  .about-block.reverse {
+    flex-direction: column !important;   /* pakotetaan kuva ensin */
+  }
+
+  .about-img {
+    order: -1;                /* pakottaa kuvan aina ennen tekstiä */
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .about-text {
+    width: 100%;
+    padding: 15px;
+    border-left: none;
+    border-right: none;
+    border-top: 3px solid #2196F3;
+  }
+}
 
 
