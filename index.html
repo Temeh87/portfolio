@@ -28,7 +28,7 @@
   </video>
   <div class="hero-bg">
     <h1>Hei, olen Teemu Koivuniemi</h1>
-    <p>Tietotekniikan insinööriopiskelija – elektroniikkaa, ohjelmointia ja 3D-tulostusta.</p>
+    <p>Tietotekniikan opiskelija VAMK:issa suuntautunut sulautettuihinjärjestelmiin.</p>
     <div class="hero-buttons">
       <a href="projects.html" class="btn btn-primary">Katso kaikki projektit</a>
       <a href="#contact" class="btn btn-outline">Ota yhteyttä</a>
@@ -40,39 +40,96 @@
 
 <section class="section" id="about">
   <div class="container about-wrap">
+
+    <!-- Elektroniikka -->
     <div class="about-block">
-      <img src="images/router1.jpg" class="about-img" alt="Elektroniikka">
       <div class="about-text">
         <h3>Elektroniikka</h3>
-        <p>Kirjoita vapaamuotoisesti esimerkiksi komponenteista, mikrokontrollereista, piirilevyistä ja elektroniikkaprojekteista joita olet tehnyt.</p>
+  <p>
+    Teen yleensä projektieni prototyypit käyttäen <strong>Arduinoa</strong>, 
+    mutta lopulliset versiot olen toteuttanut <strong>ESP32:n</strong> eri malleilla
+    projektin vaatimusten mukaan. Prototyyppeihin olen käyttänyt <strong>hyppylankoja</strong>,
+    mutta lopulliset versiot olen liittänyt <strong>tinaamalla kolvilla</strong>.
+  </p>
+  <p>
+    Olen harjoitellut <strong>LCD-näytölle</strong> tietojen tulostamista, 
+    kun data lähetetään toisen huoneen <strong>ESP32:lta</strong> 
+    <strong>ESP-NOW-yhteyden</strong> avulla. 
+  </p>
+  <p>
+    Projekteissani olen pyrkinyt hyödyntämään <strong>akkuja</strong> ja optimoimaan 
+    <strong>virrankulutusta</strong> erityisesti <strong>langattomassa datansiirrossa</strong>. 
+    Lisäksi olen perehtynyt useiden <strong>antureiden</strong> käyttöön sekä 
+    <strong>DC-moottoreiden</strong> ja <strong>moottoriohjainten</strong> hallintaan, 
+    esimerkiksi <a href="smars.html" class="inline-link">SMARS</a>-projektissani.
+  </p>
+
+        <p>
+          Lisää esimerkkejä löytyy <a href="projects.html" class="inline-link">projektisivultani</a>, 
+          jossa kerron tarkemmin käyttämistäni komponenteista.
+        </p>
       </div>
+      <img src="images/elektroniikka.png" class="about-img" alt="Elektroniikka">
     </div>
 
-    <div class="about-block reverse">
-      <img src="images/router1.jpg" class="about-img" alt="Koodaus">
+    <!-- Koodaus -->
+    <div class="about-block">
       <div class="about-text">
         <h3>Koodaus</h3>
-        <p>Kirjoita vapaamuotoisesti esimerkiksi mitä kieliä osaat, mitä sovelluksia tai projekteja olet tehnyt ja mitä osa-alueita ohjelmoinnissa haluat kehittää.</p>
+        <p>
+          Toteutan projektini yleensä käyttäen C-kieltä, joka sopii parhaiten omiin käyttötarkoituksiini.
+          Hallitsen projektejani käyttäen GitHubia versionhallintaan.  
+          
+        </p>
+        <p>
+          Itse koodauksen toteutan Visual Studio Codella, johon olen asentanut useita hyödyllisiä
+          laajennuksia
+        </p>
+
       </div>
+      <img src="images/koodaus.png" class="about-img" alt="Koodaus">
     </div>
 
+    <!-- 3D-mallinnus -->
     <div class="about-block">
-      <img src="images/router1.jpg" class="about-img" alt="3D-mallinnus">
       <div class="about-text">
         <h3>3D-mallinnus</h3>
-        <p>Kirjoita vapaamuotoista tekstiä…</p>
+        <p>
+          Mallinnukset eriprototyypeille teen käyttäen Fusion 360. 
+          Yleisimmin mallinnan projekteilleni koteloita, kiinnikkeitä ja muita osia, 
+          jotka tulostan 3D-tulostimella.
+        </p>
+        <p>
+          Pyrin tekemään malleista helposti tulostettavia ja rakenteeltaan kestäviä.
+        </p>
       </div>
+      <img src="images/mallinnus.png" class="about-img" alt="3D-mallinnus">
     </div>
 
-    <div class="about-block reverse">
-      <img src="images/router1.jpg" class="about-img" alt="3D-tulostus">
+    <!-- 3D-tulostus -->
+    <div class="about-block">
       <div class="about-text">
         <h3>3D-tulostus</h3>
-        <p>Kirjoita tähän vapaamuotoisesti…</p>
+        <p>
+          Aloitin harrastukseni <strong>Ender 3 V2</strong> -tulostimella, jota modasin 
+          mm. <strong>Klipperillä</strong>, <strong>CR-Touchilla</strong> ja 
+          parannetulla jäähdytyksellä.
+        </p>
+        <p>
+          Nykyään käytössäni on <strong>Bambu Lab X1 Carbon</strong> AMS 2 Pro -yksiköllä, 
+          jolla voin tulostaa laadukkaita monimateriaalitulosteita.
+        </p>
+        <p>
+          Olen testannut useita eri filamentteja (PLA, PETG, TPU) ja kehittänyt 
+          asetuksia optimaalisen tulostuslaadun saavuttamiseksi.
+        </p>
       </div>
+      <img src="images/tulostus.png" class="about-img" alt="3D-tulostus">
     </div>
+
   </div>
 </section>
+
 
 <!-- Tietoa tästä sivusta -->
 <section class="section" id="site-info">
