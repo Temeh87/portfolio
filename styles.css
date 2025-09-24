@@ -306,7 +306,7 @@ p{ margin: 0 0 10px; }
   inset: 0;                 /* täyttää koko kortin */
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   object-position: center;
   z-index: 0;
 }
@@ -653,5 +653,4 @@ a.inline-link:hover {
   margin-top: 30px;
   text-align: center;
 }
-
 
