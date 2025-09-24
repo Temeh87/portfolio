@@ -42,12 +42,15 @@ p{ margin: 0 0 10px; }
 /* ===============================
    Navigaatio
    =============================== */
-.navbar{
-  position: sticky; top:0; z-index:1000;
+.navbar {
+  position: relative;  /* tai poista position kokonaan */
+  top: auto;
+  z-index: 1000;
   background: rgba(26,26,26,0.9);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
+
 .nav-container{
   max-width: var(--container);
   margin: 0 auto;
@@ -619,6 +622,18 @@ a.inline-link:hover {
     border-right: none;
     border-top: 3px solid #2196F3;
   }
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar.hide {
+  transform: translateY(-100%); /* piilottaa ylös */
 }
 
 
