@@ -572,5 +572,30 @@ a.inline-link:hover {
   font-size: 1.1em;
   line-height: 1.2;     /* auttaa pystysuuntaisessa keskityksessä */
 }
+@media (max-width: 920px) {
+  .about-block {
+    flex-direction: column;   /* kuva ja teksti allekkain */
+  }
+
+  .about-block.reverse {
+    flex-direction: column;   /* reverse ei enää vaikuta mobiilissa */
+  }
+
+  .about-img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;       /* ettei veny liikaa pystysuunnassa */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .about-text {
+    width: 100%;
+    padding: 15px;
+    border-left: none;
+    border-right: none;
+    border-top: 3px solid #2196F3; /* pieni korostus kuvan ja tekstin väliin */
+  }
+}
 
 
