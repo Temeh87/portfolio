@@ -635,5 +635,23 @@ a.inline-link:hover {
 .navbar.hide {
   transform: translateY(-100%); /* piilottaa ylös */
 }
+.more-projects {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.more-projects a {
+  color: #2196F3;
+  font-weight: bold;
+}
+.more-projects a:hover {
+  color: #64b5f6;
+}
+.more-projects {
+  margin-top: 30px;
+  text-align: center;
+}
 
 
