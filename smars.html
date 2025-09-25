@@ -37,53 +37,74 @@
   </section>
 
   <!-- Projektin sisältö -->
-  <main class="container">
-    <h1 class="project-category">SMARS-botti</h1>
-    <p><em>Ensimmäinen Arduino-projektini – helmikuu 2025</em></p>
+<main class="container">
+  <h1 class="project-category">SMARS-botti</h1>
+  <p><em>Ensimmäinen Arduino-projektini – helmikuu 2025</em></p>
 
-    <section class="project-section">
-      <h2>Projektin kuvaus</h2>
-      <p>
-        SMARS (Smart Modular Arduino Robot) on yksinkertainen robottialusta, jonka
-        kokosin ja ohjelmoin Arduino Megalla. Tavoitteena oli oppia käytännössä
-        moottoreiden ohjausta, antureiden käyttöä sekä ensimmäisten
-        3D-tulostettujen osien hyödyntämistä robotiikassa.
-      </p>
-    </section>
+  <section class="project-section">
+    <h2>Projektin kuvaus</h2>
+    <p>
+      SMARS (Smart Modular Arduino Robot System) on projekti, jonka löysin netistä.
+      Kiinnostavan tästä projektista teki juuri se, että näen käytännössä mitä koodini tekee, kun se siirretään robottiin.
+      Rakensin robotin 3D-tulostetuista osista ja varustin sen kahdella DC-moottorilla, 
+      joita ohjasin Arduino Unolla ja L293D-ohjainpiirillä. Kuvissa saattaa olla kytkemättömiä komponentteja,
+      koska kaivoin projektin vain kaapin perältä kuvia varten. Eikä koodikaan ole enää tallessa,
+      koska tuolloin minulla ei ollut vielä GitHubia käytössä.
+    </p>
+  </section>
 
-    <section class="project-section">
-      <h2>Käytetyt komponentit</h2>
-      <ul>
-        <li>Arduino Mega</li>
-        <li>L293D moottoriohjain</li>
-        <li>Kaksi N20 6V DC -moottoria</li>
-        <li>3D-tulostetut SMARS-runko-osat</li>
-        <li>Akun syöttöjärjestelmä</li>
-      </ul>
-    </section>
+  <section class="project-section">
+    <h2>Tavoitteet</h2>
+    <p>
+      Projektin tavoitteena oli harjoitella moottorien, moottoriohjaimen ja antureiden kytkemistä.
+      Lisäksi halusin oppia ohjelmoimaan robottia niin, että se liikkuu eteen ja taakse päin. Halusin myös
+      saada ohjauksen kaukosäätimellä IR-vastaanottimen avulla. Sekä saada se välttämään esteitä
+      HC-SR04 etäisyysanturilla.
+    </p>
+  </section>
 
-    <section class="project-section">
-      <h2>Haasteet</h2>
-      <p>
-        Suurimmat haasteet liittyivät moottoriohjaimen kytkentöihin ja
-        ohjelmointiin. Myös rungon osien tulostus vaati hienosäätöä, jotta
-        kaikki palaset sopivat yhteen odotetusti.
-      </p>
-    </section>
+  <section class="project-section">
+    <h2>Käytetyt komponentit</h2>
+    <ul>
+      <li>Arduino Uno</li>
+      <li>L293D moottoriohjain</li>
+      <li>Kaksi N20 6V DC -moottoria</li>
+      <li>9V Akku</li>
+      <li>HC-SR04 ultraäänietäisyysanturi</li>
+      <li>HX1838 IR-vastaanotin ja kaukosäädin</li>
+      <li>3D-tulostetut osat</li>
+      <li>Pieni breadboardi ja johtoja.</li>
+    </ul>
+  </section>
 
-    <section class="project-section">
-      <h2>Opitut asiat</h2>
-      <p>
-        Projektin aikana opin paljon moottorien ja ohjainten toiminnasta,
-        Arduino-koodauksen perusasioista sekä 3D-tulostettujen osien
-        suunnittelusta ja sovittamisesta elektroniikan kanssa.
-      </p>
-    </section>
 
-    <div class="project-navigation" style="margin: 40px 0; text-align:center;">
-      <a href="projects.html" class="btn btn-primary">← Takaisin projekteihin</a>
-    </div>
-  </main>
+  <section class="project-section">
+    <h2>Haasteet</h2>
+    <p>
+      Suurimmat haasteet liittyivät DC-moottoreihin,
+      sillä käytössäni olleet 6V moottorit eivät saaneet riittävästi virtaa tavallisesta 9V paristosta Arduinon kautta.
+      Jännite ja virta laskivat moottorien kuormittaessa paristoa,
+      minkä vuoksi ne eivät jaksaneet pyöriä kunnolla. Ongelma ratkesi,
+      kun vaihdoin virtalähteeksi 9V litiumakun, joka kykeni syöttämään riittävästi virtaa sekä Arduinolle että moottoreille.
+    </p>
+  </section>
+
+  <section class="project-section">
+    <h2>Opitut asiat</h2>
+    <p>
+      Projektin aikana opin virransyötön merkityksen ja miten se vaikuttaa moottoreihin.
+      Lisäksi opin kytkemään moottorit ohjainpiiriin ja ohjaamaan niitä Arduinon avulla.
+      Pääsin tavoitteisiini, sillä robotti liikkuu eteen ja taakse päin
+      kaukosäätimellä ohjaten. Lisäksi se osaa kääntyä välttää esteitä.
+    </p>
+  </section>
+
+
+  <div class="project-navigation" style="margin: 40px 0; text-align:center;">
+    <a href="projects.html" class="btn btn-primary">← Takaisin projekteihin</a>
+  </div>
+</main>
+
 
   <!-- Footer -->
   <footer>
