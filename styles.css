@@ -439,9 +439,17 @@ form button {
   letter-spacing: .2px;
   box-shadow: var(--shadow);
   transition: filter .2s ease, transform .08s ease;
+  cursor: pointer;
 }
-form button:hover { filter: brightness(1.05); }
-form button:active { transform: translateY(1px); }
+form button:hover {
+  filter: brightness(1.05);
+  background: #1976d2;
+  transform: translateY(-2px);
+}
+
+form button:active {
+  transform: translateY(1px);
+}
 
 /* ===============================
    Footer
