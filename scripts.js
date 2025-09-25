@@ -101,3 +101,27 @@ backToTopBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+// === Swipe-tuki mobiilille ===
+const mainImage = document.getElementById("main-image");
+let startX = 0;
+
+if (mainImage) {
+  mainImage.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  mainImage.addEventListener("touchend", (e) => {
+    let endX = e.changedTouches[0].clientX;
+    let diff = startX - endX;
+
+    if (Math.abs(diff) > 50) { // vähintään 50px liike
+      if (diff > 0) {
+        // swipe vasemmalle → seuraava kuva
+        changeImage(1);
+      } else {
+        // swipe oikealle → edellinen kuva
+        changeImage(-1);
+      }
+    }
+  });
+}

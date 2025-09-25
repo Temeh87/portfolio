@@ -529,3 +529,8 @@ a.inline-link:hover { color: #64b5f6; }
   .btn, .project-card { transition: none!important; }
   .hero-video { animation: none!important; }
 }
+@media (max-width: 1024px) {
+  .gallery-btn {
+    display: none;
+  }
+}
