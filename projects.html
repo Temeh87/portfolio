@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projektit – Teemu Koivuniemi</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    
+
+  <!-- Navigaatio -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Teemu Koivuniemi</a>
+      <ul class="nav-menu">
+        <li><a href="index.html#hero" class="nav-link">Etusivu</a></li>
+        <li><a href="index.html#about" class="nav-link">Tietoja</a></li>
+        <li><a href="projects.html" class="nav-link active">Projektit</a></li>
+        <li><a href="index.html#contact" class="nav-link">Yhteystiedot</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Ylätunniste -->
+  <section class="section">
+    <div class="container projects-header">
+      <h1>Projektit</h1>
+      <p>
+        Tälle sivulle olen koonnut kaikki projektini. Voit tarkastella niitä ja
+        napauttamalla tiettyä projektia pääset sen lisätietoihin.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projektit yhtenä listana -->
+  <section class="projects">
+    <div class="container">
+      <div class="project-grid">
+
+        <!-- Esimerkkiprojekti -->
+        <a href="smars.html" class="project-card">
+          <img src="images/smars.jpg" alt="SMARS-botti">
+          <h3>SMARS-botti</h3>
+          <p><strong>02/2025</strong><br/>Ensimmäinen Arduino/ESP-projektini.</p>
+        </a>
+
+        <a href="router.html" class="project-card">
+          <img src="images/router1.jpg" alt="Reitittimen seinäkiinnike">
+          <h3>Seinäkiinnike</h3>
+          <p><strong>08/2025</strong><br/>3D-tulostettu seinäkiinnike reitittimelle.</p>
+        </a>
+
+        <!-- Lisää projekteja -->
+        <a href="project-template.html" class="project-card">
+          <img src="images/placeholder_code.jpg" alt="Projektikuva">
+          <h3>Ohjelmistoprojekti</h3>
+          <p><strong>MM/VVVV</strong><br/>Lyhyt kuvaus projektista.</p>
+        </a>
+
+        <a href="project-template.html" class="project-card">
+          <img src="images/placeholder_print.jpg" alt="Projektikuva">
+          <h3>3D-projekti</h3>
+          <p><strong>MM/VVVV</strong><br/>Lyhyt kuvaus projektista.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Takaisin etusivulle / yhteyteen -->
+  <section class="section">
+    <div class="container back-links">
+      <a href="index.html#contact" class="btn btn-outline">Ota yhteyttä</a>
+      <a href="index.html#hero" class="btn btn-primary">Takaisin etusivulle</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
+  </footer>
+  <button id="back-to-top" title="Takaisin ylös">↑</button>
+    <!-- Scriptit tänne -->
+  <script src="scripts.js"></script>
 </body>
 </html>

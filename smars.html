@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMARS-botti – Projektit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigaatio -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Teemu Koivuniemi</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Etusivu</a></li>
+        <li><a href="index.html#about" class="nav-link">Tietoja</a></li>
+        <li><a href="projects.html" class="nav-link active">Projektit</a></li>
+        <li><a href="index.html#contact" class="nav-link">Yhteystiedot</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Projektin kuvagalleria hero-alueella -->
+  <section class="project-hero">
+    <div class="image-gallery">
+      <button class="gallery-btn prev">❮</button>
+      <img id="main-image" src="images/smars1.jpg" alt="SMARS robotti">
+      <button class="gallery-btn next">❯</button>
+    </div>
+    <div class="thumbnails">
+      <img src="images/smars1.jpg" class="thumbnail active" alt="SMARS kuva 1">
+      <img src="images/smars2.jpg" class="thumbnail" alt="SMARS kuva 2">
+      <img src="images/smars3.jpg" class="thumbnail" alt="SMARS kuva 3">
+    </div>
+  </section>
+
+  <!-- Projektin sisältö -->
+  <main class="container">
+    <h1 class="project-category">SMARS-botti</h1>
+    <p><em>Ensimmäinen Arduino-projektini – helmikuu 2025</em></p>
+
+    <section class="project-section">
+      <h2>Projektin kuvaus</h2>
+      <p>
+        SMARS (Smart Modular Arduino Robot) on yksinkertainen robottialusta, jonka
+        kokosin ja ohjelmoin Arduino Megalla. Tavoitteena oli oppia käytännössä
+        moottoreiden ohjausta, antureiden käyttöä sekä ensimmäisten
+        3D-tulostettujen osien hyödyntämistä robotiikassa.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Käytetyt komponentit</h2>
+      <ul>
+        <li>Arduino Mega</li>
+        <li>L293D moottoriohjain</li>
+        <li>Kaksi N20 6V DC -moottoria</li>
+        <li>3D-tulostetut SMARS-runko-osat</li>
+        <li>Akun syöttöjärjestelmä</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Haasteet</h2>
+      <p>
+        Suurimmat haasteet liittyivät moottoriohjaimen kytkentöihin ja
+        ohjelmointiin. Myös rungon osien tulostus vaati hienosäätöä, jotta
+        kaikki palaset sopivat yhteen odotetusti.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Opitut asiat</h2>
+      <p>
+        Projektin aikana opin paljon moottorien ja ohjainten toiminnasta,
+        Arduino-koodauksen perusasioista sekä 3D-tulostettujen osien
+        suunnittelusta ja sovittamisesta elektroniikan kanssa.
+      </p>
+    </section>
+
+    <div class="project-navigation" style="margin: 40px 0; text-align:center;">
+      <a href="projects.html" class="btn btn-primary">← Takaisin projekteihin</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
+  </footer>
+  <button id="back-to-top" title="Takaisin ylös">↑</button>
+    <!-- Scriptit tänne -->
+  <script src="scripts.js"></script>
+</body>
+</html>

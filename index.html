@@ -36,37 +36,47 @@
   </div>
 </section>
 
-
-
 <section class="section" id="about">
-  <div class="container about-wrap">
+  <div class="container">
+    <h2 class="project-category">Mistä kaikki lähti</h2>
+
+    <!-- 3D-tulostus -->
+    <div class="about-block">
+      <div class="about-text">
+        <h3>3D-tulostus</h3>
+        <p>
+          Kaikki lähti liikkeelle 3D-tulostamisesta, kun hankin ensimmäisen 
+          Ender 3 V2 -tulostimeni. Jo ennen hankintaa tiesin, että kyseistä mallia
+          voi muokata ja parannella monin eri tavoin. Lopulta huomasin käyttäväni
+          enemmän aikaa itse tulostimen säätämiseen kuin tulostamiseen. 
+          Tärkeimpinä parannuksina asensin Klipperin, joka on Raspberry Pi:lle asennettava
+          ohjelmisto tulostimen ohjaamiseen, sekä CRTouch anturin, jonka avulla
+          tulostin pystyy mittaamaan tulostusalustan pinnan tasaisuuden ja tekemään
+          siitä tarkan "mesh-kartan". Näin tulostus onnistuu hyvin myös silloin, kun
+          alusta ei ole täysin suorassa. 
+          Näiden myötä kiinnostukseni siirtyi yhä enemmän elektroniikan ja
+          ohjelmoinnin puolelle, sillä halusin ymmärtää paremmin, miten laitteet
+          toimivat ja miten niitä voisi kehittää. Nykyään minulla on käytössäni Bambu Lab X1 Carbon tulostin, joka ei
+          vaadi juurikaan säätämistä toimiakseen hyvin. 
+        </p>
+      </div>
+      <img src="images/tulostus.png" class="about-img" alt="3D-tulostus">
+    </div>
 
     <!-- Elektroniikka -->
     <div class="about-block">
       <div class="about-text">
         <h3>Elektroniikka</h3>
-  <p>
-    Teen yleensä projektieni prototyypit käyttäen <strong>Arduinoa</strong>, 
-    mutta lopulliset versiot olen toteuttanut <strong>ESP32:n</strong> eri malleilla
-    projektin vaatimusten mukaan. Prototyyppeihin olen käyttänyt <strong>hyppylankoja</strong>,
-    mutta lopulliset versiot olen liittänyt <strong>tinaamalla kolvilla</strong>.
-  </p>
-  <p>
-    Olen harjoitellut <strong>LCD-näytölle</strong> tietojen tulostamista, 
-    kun data lähetetään toisen huoneen <strong>ESP32:lta</strong> 
-    <strong>ESP-NOW-yhteyden</strong> avulla. 
-  </p>
-  <p>
-    Projekteissani olen pyrkinyt hyödyntämään <strong>akkuja</strong> ja optimoimaan 
-    <strong>virrankulutusta</strong> erityisesti <strong>langattomassa datansiirrossa</strong>. 
-    Lisäksi olen perehtynyt useiden <strong>antureiden</strong> käyttöön sekä 
-    <strong>DC-moottoreiden</strong> ja <strong>moottoriohjainten</strong> hallintaan, 
-    esimerkiksi <a href="smars.html" class="inline-link">SMARS</a>-projektissani.
-  </p>
-
         <p>
-          Lisää esimerkkejä löytyy <a href="projects.html" class="inline-link">projektisivultani</a>, 
-          jossa kerron tarkemmin käyttämistäni komponenteista.
+          Tulostimen modauksen jälkeen kiinnostuin Arduinosta, jolla tein ensimmäiset
+          projektini. Ensimmäinen isompi projektini oli SMARS-botti, joka sisälsi
+          DC-moottoreita, antureita ja muita komponentteja. Projekti opetti minulle
+          paljon elektroniikasta, kytkennöistä ja ohjelmoinnista. Tämän jälkeen kiinnostuin ESP32-mikrocontrollerista,
+          koska minua kiinnosti erityisesti se, miten laitteet lähettävät ja vastaanottavat dataa langattomasti.
+          Yhdistin projektiini myös LCD-näytön, jotta saisin vastaanotetun datan näkyviin muaallekkin kuin Serial monitoriin.
+          Tulevaisuudessa minua kiinnostaisi toteuttaa jonkinlainen ikuisuusprojekti, jota ohjataan CAN-väylän avulla ja
+          johon voisin lisätä uusia ominaisuuksia ja antureita ajan myötä. Kokemuksen kertyessä haaveenani olisi myös rakentaa jollekkin
+          laitteelle oma linux-pohjainen käyttöjärjestelmä, mutta tähän en ole vielä hirveästi perehtynyt.
         </p>
       </div>
       <img src="images/elektroniikka.png" class="about-img" alt="Elektroniikka">
@@ -77,14 +87,18 @@
       <div class="about-text">
         <h3>Koodaus</h3>
         <p>
-            Toteutan projektini yleensä käyttäen <strong>C-kieltä</strong>, joka sopii parhaiten omiin käyttötarkoituksiini.
-            Hallitsen projektejani käyttäen <strong>GitHubia</strong> versionhallintaan.  
-          
-        </p>
-        <p>
-            Itse koodauksen toteutan <strong>Visual Studio Codella</strong>, johon olen asentanut useita hyödyllisiä <strong>laajennuksia</strong>
-            juuri <strong>Gitin</strong> käytön helpottamiseksi. Sekä <strong>MinGW:n</strong>, C-koodin kääntämiseen.
-            <strong>Arduino</strong> ja <strong>ESP</strong> projekteissa käytän yleensä <strong>Arduino IDE:ä</strong>.
+          Elektroniikan rinnalla aloin panostaa enemmän ohjelmointiin.
+          Tällä hetkellä pääasiallinen ohjelmointikieleni on C, koska
+          se soveltuu parhaiten käyttötarkoituksiini. Olen kuitenkin tulevaisuudessa
+          kiinnostunut hyödyntämään myös C++:aa kun vaan saan opiskeltua sitä lisää.
+          Minulla on käytössäni Visual Studio Code, jolla kirjoitan koodini.
+          Käytän versionhallintaan GitHubia, jossa on helppo seurata koodin
+          kehitystä ja tehdä tarvittaessa muutoksia vanhempiin versioihin.
+          Hyödynnän koodauksessa tekoälyä, mutta pyrin siihen, että en käytä mitään sellaista koodia, jota itse en ymmärrä.
+          Tavoitteenani on oppia ymmärtämään koodia paremmin ja kehittämään loogista ajatteluani.
+          Arduino-projekteissani käytän Arduino IDE:ä kääntämiseen ja ohjelman lataamiseen laitteeseen.
+
+
         </p>
       </div>
       <img src="images/koodaus.png" class="about-img" alt="Koodaus">
@@ -95,48 +109,22 @@
       <div class="about-text">
         <h3>3D-mallinnus</h3>
         <p>
-          Mallinnukset eriprototyypeille teen käyttäen <strong>Fusion 360</strong>. 
-          Yleisimmin mallinnan projekteilleni <strong>koteloita</strong>, <strong>kiinnikkeitä</strong> ja muita osia, 
-          jotka tulostan <strong>3D-tulostimella</strong>. On minulla myös yleiseen käyttöön tehtyjä malleja,
-          kuten kiinnike, jolla saan <strong>videotykin</strong> asennettua niin, että ei tarvitse tehdä reikiä seinään tai kattoon.
-        </p>
-        <p>
-          Pyrin tekemään malleista <strong>helposti tulostettavia</strong> ja <strong>rakenteeltaan kestäviä</strong>, kuitenkin pyrkien siihen,
-          että materiaalia ei kuluisi turhaan tukiin tai muuhun.
+          Projektien myötä aloin kehittää myös 3D-mallinnustaitojani, jotta
+          voisin suunnitella itse sopivia koteloita ja kiinnikkeitä elektroniikalle.
+          Käytän mallinnuksessa Fusion 360 -ohjelmaa ja pyrin tekemään malleista
+          helposti tulostettavia, kestäviä ja materiaalitehokkaita. Mallinnus on
+          osoittautunut tärkeäksi osaksi projektieni kokonaisuutta. 3D-mallinnus on
+          saanut minut myös pohtimaan tarkemmin, millaisia materiaaleja voin projekteissani käyttää,
+          jonka ansiosta olen oppinut paljon eri muoveista ja niiden ominaisuuksista.
         </p>
       </div>
       <img src="images/mallinnus.png" class="about-img" alt="3D-mallinnus">
     </div>
 
-    <!-- 3D-tulostus -->
-    <div class="about-block">
-      <div class="about-text">
-        <h3>3D-tulostus</h3>
-        <p>
-          Aloitin harrastukseni <strong>Ender 3 V2</strong> -tulostimella, jota modasin 
-          mm. <strong>Klipperillä</strong>, joka on <strong>Raspberry Pi:lle</strong> asennettu valmis softa, jolla ohjataan tulostinta.
-          Asensin siihen myös <strong>CrTouchin</strong>, joka helpottaa tulostusalustan kalibrointia. 
-          On myös muita modauksia, mutta lista on pitkä.
-          Tulostin on toiminut hyvin, mutta vaatii jonkin verran säätöä ja huoltoa.
-        </p>
-        <p>
-          Nykyään käytössäni on <strong>Bambu Lab X1 Carbon AMS 2 Pro:lla</strong>,
-          uuden tulostimeni kanssa ei joudu säätämään niin paljon kuin edellisen.
-        </p>
-        <p>
-          3D-mallinnettujen tiedostojen "slicingin" teen käyttäen <strong>Bambu Studioa</strong>,
-          jolla tiedostot muutetaan sellaiseen muotoon, että tulostin osaa lukea ne.
-        </p>
-        <p>
-          Harrastuksen aikana olen oppinut paljon <strong>tulostusmateriaaleista</strong> 
-          ja niiden <strong>ominaisuuksista</strong>.
-        </p>
-      </div>
-      <img src="images/tulostus.png" class="about-img" alt="3D-tulostus">
-    </div>
-
   </div>
 </section>
+
+
 
 
 <!-- Tietoa tästä sivusta -->
@@ -144,33 +132,32 @@
   <div class="container">
     <h2>Tietoa tästä sivusta</h2>
     <div class="site-info-box">
-  <p>
-    Tämä sivusto on rakennettu käyttäen <strong>HTML</strong>, <strong>CSS</strong> ja pientä määrää <strong>JavaScriptiä</strong> 
-    ilman valmiita sivupohjia. Sivusto on hostattu <strong>GitHub Pagesin</strong> kautta ja sen tarkoitus on esitellä 
-    <strong>projektini</strong> ja <strong>osaamiseni</strong> työnhakua edistääkseni, sekä toimia paikkana, johon voin kerätä 
-    kaikki <strong>projektini talteen</strong>.
-  </p>
+    <p>
+      Tämä sivusto on rakennettu käyttäen HTML, CSS ja pientä määrää JavaScriptiä 
+      ilman valmiita sivupohjia. Sivusto on hostattu GitHub Pagesin kautta ja sen tarkoitus on esitellä 
+      projektini ja osaamiseni työnhakua edistääkseni, sekä toimia paikkana, johon voin kerätä 
+      kaikki projektini talteen.
+    </p>
 
-  <p>
-    Halusin tehdä sivustosta <strong>visuaalisesti miellyttävän</strong> ja <strong>helppokäyttöisen</strong>, 
-    jotta kävijät viihtyisivät täällä pidempään. Sivusto on <strong>optimoitu</strong> toimimaan hyvin sekä 
-    <strong>tietokoneella</strong> että <strong>mobiililaitteilla</strong>. Alkuperäinen ideani oli hostata tätä itse 
-    <strong>Raspberry Pi:llä</strong>, mutta päädyin lopulta <strong>GitHub Pagesiin</strong> 
-    <strong>helppokäyttöisyyden</strong> ja <strong>luotettavuuden</strong> vuoksi. Saatan jossain vaiheessa hankkia 
-    sivustolle <strong>oman domainin</strong>, mutta toistaiseksi tämä toimii hyvin näin.
-  </p>
+    <p>
+      Halusin tehdä sivustosta visuaalisesti miellyttävän ja helppokäyttöisen, 
+      jotta välittyisi se, että tämä on yksi projekteistani muiden joukossa, johon on panostettu. Sivusto on optimoitu toimimaan hyvin sekä 
+      tietokoneella että mobiililaitteilla. Alkuperäinen ideani oli hostata tätä itse 
+      Raspberry Pi:llä, mutta päädyin lopulta GitHub Pagesiin 
+      helppokäyttöisyyden ja luotettavuuden vuoksi. Saatan jossain vaiheessa hankkia 
+      sivustolle oman domainin, mutta toistaiseksi tämä toimii hyvin näin.
+    </p>
 
-  <p>
-    Sivuston luomisessa on hyödynnetty <strong>tekoälyä</strong> esimerkiksi <strong>kuvien luomisessa</strong> sekä 
-    <strong>ulkoasun suunnittelussa</strong>. Kuitenkin kaikki <strong>tekstit</strong>, <strong>koodit</strong> ja 
-    muu <strong>sisältö</strong> on kirjoitettu itse, eikä tekoäly ole luonut mitään sisältöä itsenäisesti.
-  </p>
+    <p>
+      Sivuston luomisessa on hyödynnetty tekoälyä esimerkiksi kuvien luomisessa sekä 
+      ulkoasun suunnittelussa. Kuitenkin kaikki tekstit, koodit ja 
+      muu sisältö on kirjoitettu itse, eikä tekoäly ole luonut mitään sisältöä itsenäisesti.
+    </p>
+
 
     </div>
   </div>
 </section>
-
-
 
   <!-- Projektinäytteet -->
 <section class="projects">
@@ -224,6 +211,7 @@
   <footer>
     <p>&copy; 2025 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
   </footer>
+  <button id="back-to-top" title="Takaisin ylös">↑</button>
     <!-- Scriptit tänne -->
   <script src="scripts.js"></script>
 </body>
