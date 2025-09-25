@@ -53,20 +53,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "ArrowRight") changeImage(1);
   });
 
-  // Swipe mobiilissa
+  // === Swipe mobiilille ===
   if (mainImage) {
     let startX = 0;
+
     mainImage.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
-    });
+    }, { passive: true });
+
     mainImage.addEventListener("touchend", (e) => {
+      e.preventDefault();
       let endX = e.changedTouches[0].clientX;
       let diff = startX - endX;
-      if (Math.abs(diff) > 50) { // vähintään 50px liike
+
+      if (Math.abs(diff) > 50) {
         if (diff > 0) {
-          changeImage(1);  // seuraava kuva
+          changeImage(1);
         } else {
-          changeImage(-1); // edellinen kuva
+          changeImage(-1);
         }
       }
     });
