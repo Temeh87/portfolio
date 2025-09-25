@@ -531,6 +531,6 @@ a.inline-link:hover { color: #64b5f6; }
 }
 @media (max-width: 1024px) {
   .gallery-btn {
-    display: none;
+    display: none!important;
   }
 }
