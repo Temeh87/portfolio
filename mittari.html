@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mittari – Projektit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigaatio -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Teemu Koivuniemi</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Etusivu</a></li>
+        <li><a href="index.html#about" class="nav-link">Tietoja</a></li>
+        <li><a href="index.html#contact" class="nav-link">Yhteystiedot</a></li>
+        <li><a href="projects.html" class="nav-link active">Projektit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Projektin kuvagalleria hero-alueella -->
+  <section class="project-hero">
+    <div class="image-gallery">
+      <button class="gallery-btn prev">❮</button>
+      <img id="main-image" src="images/lahetin.png" alt="mittari">
+      <button class="gallery-btn next">❯</button>
+    </div>
+    <div class="thumbnails">
+      <img src="images/lahetin.png" class="thumbnail active" alt="Mittari kuva 1">
+      <img src="images/lahetin1.png" class="thumbnail active" alt="Mittari kuva 2">
+      <img src="images/vastaanotin.png" class="thumbnail active" alt="Mittari kuva 3">
+    </div>
+  </section>
+
+  <!-- Projektin sisältö -->
+<main class="container">
+  <h1 class="project-category">Mittari</h1>
+  <p><em>ESP lähettävä lämpötila mittari – lokakuu 2025</em></p>
+
+  <section class="project-section">
+    <h2>Projektin kuvaus</h2>
+    <p>
+      Koodit:
+      <li><a href="https://github.com/Temeh87/esp_sender" class="nav-link">Lähettäjä</a></li>
+      <li><a href="https://github.com/Temeh87/esp_receiver" class="nav-link">Vastaanottaja</a></li>
+    </p>
+  </section>
+
+  <section class="project-section">
+    <h2>Tavoitteet</h2>
+    <p>
+      
+    </p>
+  </section>
+
+  <section class="project-section">
+    <h2>Käytetyt komponentit</h2>
+    <ul>
+      <li>2x ESP32 WROOM 32U</li>
+      <li>2x WIFI/GSM antenni 2.4G</li>
+      <li>1x DS18B20 lämpötila-anturi</li>
+      <li>1x 330 Ohm vastus LED-valoon</li>
+      <li>1x 4,7k Ohm vastus lämpöanturiin</li>
+      <li>1x Nappi</li>
+      <li>1x LED</li>
+      <li>1x 128x128 OLED</li>
+      
+    </ul>
+  </section>
+
+
+  <section class="project-section">
+    <h2>Haasteet</h2>
+    <p>
+      
+    </p>
+  </section>
+
+  <section class="project-section">
+    <h2>Opitut asiat</h2>
+    <p>
+      
+    </p>
+  </section>
+
+
+  <div class="project-navigation" style="margin: 40px 0; text-align:center;">
+    <a href="projects.html" class="btn btn-primary">← Takaisin projekteihin</a>
+  </div>
+</main>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
+  </footer>
+  <button id="back-to-top" title="Takaisin ylös">↑</button>
+    <!-- Scriptit tänne -->
+  <script src="scripts.js"></script>
+</body>
+</html>
