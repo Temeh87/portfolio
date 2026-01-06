@@ -13,8 +13,8 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo">Teemu Koivuniemi</a>
       <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Projektit</a></li>
         <li><a href="index.html#contact" class="nav-link">Yhteystiedot</a></li>
-        <li><a href="projects.html" class="nav-link active">Projektit</a></li>
       </ul>
     </div>
   </nav>
@@ -44,7 +44,7 @@
         <!-- Esimerkkiprojekti -->
         <a href="mittari.html" class="project-card">
           <img src="images/lahetin.png" alt="lähetin">
-          <h3>Mittari</h3>
+          <h3>Mittari v1.0</h3>
           <p><strong>02/2025</strong><br/>ESP32 lämpömittari.</p>
         </a>
 
@@ -53,18 +53,27 @@
     </div>
   </section>
 
-
-  <!-- Takaisin etusivulle / yhteyteen -->
-  <section class="section">
-    <div class="container back-links">
-        <a href="index.html#hero" class="btn btn-primary">Takaisin etusivulle</a>
-        <a href="index.html#contact" class="btn btn-outline">Ota yhteyttä</a>
+  <!-- Yhteystiedot-osio -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Yhteystiedot</h2>
+      <p class="contact-email">
+        Voit lähettää viestin alla olevalla lomakkeella tai sähköpostitse:
+        <a href="mailto:teemu.p.koivuniemi@gmail.com">teemu.p.koivuniemi@gmail.com</a>
+      </p>
+      <form action="https://formspree.io/f/mqalyrlp" method="POST">
+        <input type="text" name="nimi" placeholder="Nimi" required>
+        <input type="email" name="sahkoposti" placeholder="Sähköposti" required>
+        <textarea name="viesti" placeholder="Viesti" required></textarea>
+        <button type="submit" class="submit-button">Lähetä viesti</button>
+      </form>
     </div>
   </section>
 
+
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
+    <p>&copy; 2026 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
   </footer>
   <button id="back-to-top" title="Takaisin ylös">↑</button>
     <!-- Scriptit tänne -->

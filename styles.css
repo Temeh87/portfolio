@@ -353,8 +353,9 @@ p { margin: 0 0 10px; }
   width: 100%;
 }
 #main-image {
-  max-width: 350px;
-  width: 100%;
+  width: 500px;
+  height: 450px;
+  object-fit: cover;
   border-radius: 10px;
   box-shadow: var(--shadow);
 }
