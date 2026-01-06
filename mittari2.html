@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mittari v2.0 – Projektit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigaatio -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Teemu Koivuniemi</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Projektit</a></li>
+        <li><a href="index.html#contact" class="nav-link">Yhteystiedot</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Projektin kuvagalleria hero-alueella -->
+  <section class="project-hero">
+    <div class="image-gallery">
+      <button class="gallery-btn prev">❮</button>
+      <img id="main-image" src="images/pcb.png" alt="Mittari v2.0">
+      <button class="gallery-btn next">❯</button>
+    </div>
+    <div class="thumbnails">
+      <img src="images/pcb.png" class="thumbnail active" alt="Mittari v2.0 kuva 1">
+      <img src="images/pcb1.png" class="thumbnail" alt="Mittari v2.0 kuva 2">
+      <img src="images/pcb2.png" class="thumbnail" alt="Mittari v2.0 kuva 3">
+      <img src="images/pcb3.png" class="thumbnail" alt="Mittari v2.0 kuva 4">
+    </div>
+  </section>
+
+  <!-- Projektin sisältö -->
+<main class="container">
+  <h1 class="project-category">Mittarin lähetinosa v2.0</h1>
+  <p><em>PCB-pohjainen ESP32 lämpömittari – tammikuu 2026</em></p>
+
+  <section class="project-section">
+    <h2>Projektin kuvaus</h2>
+    <p>
+      Mittari v2.0 on paranneltu versio ensimmäisestä mittariprojektista. Tässä versiossa
+      siirryin kytkennöistä PCB-piirilevyyn, mikä tekee projektista
+      kompaktimman, luotettavamman ja ammattimaisemman näköisen. Projekti on vielä keskeneräinen,
+      minulla ole varmuutta toimiiko kaikki suunnitellusti, mutta pääpaino projektissa on ollut 
+        PCB-suunnittelussa ja valmistusprosessin oppimisessa.
+    </p>
+  </section>
+
+  <section class="project-section">
+    <h2>Tavoitteet</h2>
+    <ul>
+      <li>Suunnitella ja tilata oma PCB-piirilevy projektille</li>
+      <li>Oppia KiCadin käyttöä</li>
+      <li>Opetella datasheetien lukemista ja komponenttien valintaa</li>
+      <li>Oppia PCB-suunnittelua ja valmistusprosessia</li>
+    </ul>
+  </section>
+
+  <section class="project-section">
+    <h2>Käytetyt komponentit</h2>
+    <ul>
+      <li>1x ESP32-C3-WROOM-02 (RF Module)</li>
+      <li>1x MCP1700x-330xxTT (3.3V jänniteregulaattori, SOT-23)</li>
+      <li>1x SS14 diodi (SMA)</li>
+      <li>1x 500mA sulake (1206/3216 Metric)</li>
+      <li>7x kondensaattori (10µF, 10µF, 0.1µF, 0.1µF, 0.1µF, 10µF, 0.1µF) - 0805/2012 Metric</li>
+      <li>1x 10kΩ vastus (0805/2012 Metric)</li>
+      <li>1x 4.7kΩ vastus (0805/2012 Metric)</li>
+      <li>1x 470kΩ vastus (0805/2012 Metric)</li>
+      <li>1x 220kΩ vastus (0805/2012 Metric)</li>
+      <li>2x painonappi (SW_SPST)</li>
+      <li>1x Phoenix Contact ruuviliitäntä 1x02 (5.08mm pituus)</li>
+      <li>1x PinHeader 1x03 (2.54mm pituus, pystysuora)</li>
+      <li>1x Phoenix Contact ruuviliitäntä 1x03 (5.08mm pituus)</li>
+    </ul>
+  </section>
+
+  <section class="project-section">
+    <h2>Haasteet</h2>
+    <ul>
+      <li>Komponenttien oikea sijoittelu ja reititys piirilevyllä</li>
+      <li>Mittojen säätäminen ja komponenttien valinta</li>
+    </ul>
+  </section>
+
+  <section class="project-section">
+    <h2>Opitut asiat</h2>
+    <ul>
+      <li>KiCadin käyttö</li>
+      <li>Piirilevyn komponenttien sijoittelu ja reititys</li>
+      <li>PCB-valmistusprosessin ymmärtäminen</li>
+      <li>Datasheetien tärkeys</li>
+    </ul>
+  </section>
+
+  <div class="project-navigation" style="margin: 40px 0; text-align:center;">
+    <a href="index.html" class="btn btn-primary">← Takaisin projekteihin</a>
+  </div>
+</main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Teemu Koivuniemi. Rakennettu GitHub Pagesilla.</p>
+  </footer>
+  <button id="back-to-top" title="Takaisin ylös">↑</button>
+    <!-- Scriptit tänne -->
+  <script src="scripts.js"></script>
+</body>
+</html>
