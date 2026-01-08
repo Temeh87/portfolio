@@ -159,7 +159,7 @@ p { margin: 0 0 10px; }
    Osiot ja kontit
    =============================== */
 .section { padding: 70px 20px; }
-.container { max-width: var(--container); margin: 0 auto; padding: 0 15px; width: 100%; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); width: 100%; }
 .project-category {
   display: inline-block;
   margin: 0 0 18px;
