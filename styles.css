@@ -159,7 +159,7 @@ p { margin: 0 0 10px; }
    Osiot ja kontit
    =============================== */
 .section { padding: 70px 20px; }
-.container { max-width: var(--container); margin: 0 auto; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 15px; width: 100%; }
 .project-category {
   display: inline-block;
   margin: 0 0 18px;
@@ -302,7 +302,7 @@ p { margin: 0 0 10px; }
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 12px;
-  padding: 25px 30px;
+  padding: clamp(15px, 4vw, 30px);
   margin: 30px 0;
   box-shadow: 0 6px 20px rgba(0,0,0,0.35);
   line-height: 1.7;
@@ -311,7 +311,7 @@ p { margin: 0 0 10px; }
 .project-section h2 {
   margin-top: 0;
   margin-bottom: 12px;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
   color: #fff;
   display: inline-block;
   padding-bottom: 4px;
@@ -349,33 +349,35 @@ p { margin: 0 0 10px; }
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 700px;
+  gap: 15px;
+  max-width: 600px;
   width: 100%;
 }
 #main-image {
-  width: 500px;
-  height: 450px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  aspect-ratio: 10 / 9;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: var(--shadow);
 }
 .gallery-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
   background: rgba(0,0,0,0.5);
   color: white;
   border: none;
-  font-size: 2rem;
-  padding: 10px 16px;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  padding: clamp(8px, 2vw, 16px);
   cursor: pointer;
   border-radius: 50%;
   z-index: 2;
   transition: background 0.2s ease;
+  flex-shrink: 0;
 }
 .gallery-btn:hover { background: rgba(33,150,243,0.8); }
-.gallery-btn.prev { left: 10px; }
-.gallery-btn.next { right: 10px; }
+.gallery-btn.prev { order: -1; }
+.gallery-btn.next { order: 1; }
 .thumbnails {
   display: flex;
   gap: 10px;
@@ -383,8 +385,8 @@ p { margin: 0 0 10px; }
   justify-content: center;
 }
 .thumbnail {
-  width: 90px;
-  height: 90px;
+  width: clamp(60px, 15vw, 90px);
+  height: clamp(60px, 15vw, 90px);
   object-fit: cover;
   border-radius: 6px;
   opacity: .6;
