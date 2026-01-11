@@ -19,13 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentImageIndex = 0;
   const thumbnails = document.querySelectorAll(".thumbnail");
   const mainImage = document.getElementById("main-image");
+  const mainVideo = document.getElementById("main-video");
   const prevBtn = document.querySelector(".gallery-btn.prev");
   const nextBtn = document.querySelector(".gallery-btn.next");
 
   function showImage(imgElement) {
     thumbnails.forEach(thumb => thumb.classList.remove("active"));
     imgElement.classList.add("active");
-    mainImage.src = imgElement.src;
+    
+    // Tarkistetaan onko video vai kuva
+    if (imgElement.dataset.video === "true") {
+      // Näytetään video, piilotetaan kuva
+      mainImage.style.display = "none";
+      mainVideo.style.display = "block";
+      mainVideo.src = imgElement.src;
+      mainVideo.load();
+    } else {
+      // Näytetään kuva, piilotetaan video
+      mainVideo.style.display = "none";
+      mainImage.style.display = "block";
+      mainImage.src = imgElement.src;
+      if (mainVideo) {
+        mainVideo.pause();
+      }
+    }
+    
     currentImageIndex = Array.from(thumbnails).indexOf(imgElement);
   }
 
