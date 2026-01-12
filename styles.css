@@ -256,7 +256,7 @@ p { margin: 0 0 10px; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 260px;
+  height: 340px;
   border-radius: 10px;
   overflow: hidden;
   background: #1b1b1b;
@@ -373,8 +373,8 @@ p { margin: 0 0 10px; }
   width: 100%;
   max-width: 500px;
   height: auto;
-  aspect-ratio: 10 / 9;
-  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  object-fit: fill;
   border-radius: 10px;
   box-shadow: var(--shadow);
 }
