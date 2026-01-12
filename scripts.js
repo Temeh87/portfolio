@@ -147,57 +147,47 @@ const projectCards = document.querySelectorAll(".project-card");
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 if (isTouchDevice) {
-  // MOBIILI: Automaattinen toisto näytön keskikohdan perusteella
-  function updateVideoPlayback() {
-    const viewportCenter = window.innerHeight / 2;
-    let closestCard = null;
-    let closestDistance = Infinity;
-    
-    projectCards.forEach(card => {
-      const video = card.querySelector(".project-video");
+  // MOBIILI: Intersection Observer automaattiseen toistoon
+  let currentlyPlayingVideo = null;
+
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector(".project-video");
       if (!video) return;
-      
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(viewportCenter - cardCenter);
-      
-      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-      
-      if (isVisible && distance < closestDistance) {
-        closestDistance = distance;
-        closestCard = card;
-      }
-    });
-    
-    projectCards.forEach(card => {
-      const video = card.querySelector(".project-video");
-      if (!video) return;
-      
-      if (card === closestCard) {
+
+      // Jos kortti on riittävästi näkyvissä
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+        // Pysäytä aiemmin toistava video
+        if (currentlyPlayingVideo && currentlyPlayingVideo !== video) {
+          currentlyPlayingVideo.classList.remove("playing");
+          currentlyPlayingVideo.pause();
+          currentlyPlayingVideo.currentTime = 0;
+        }
+        
+        // Toista tämä video
         video.classList.add("playing");
         video.play().catch(err => console.log("Video play failed:", err));
+        currentlyPlayingVideo = video;
       } else {
-        video.classList.remove("playing");
-        video.pause();
-        video.currentTime = 0;
+        // Kortti ei ole riittävästi näkyvissä
+        if (currentlyPlayingVideo === video) {
+          video.classList.remove("playing");
+          video.pause();
+          video.currentTime = 0;
+          currentlyPlayingVideo = null;
+        }
       }
     });
-  }
+  }, {
+    threshold: [0, 0.6, 1.0],
+    rootMargin: "-20% 0px -20% 0px" // Aktivoituu kun kortti on keskellä ruutua
+  });
 
-  let videoTicking = false;
-  function onVideoScroll() {
-    if (!videoTicking) {
-      window.requestAnimationFrame(() => {
-        updateVideoPlayback();
-        videoTicking = false;
-      });
-      videoTicking = true;
+  projectCards.forEach(card => {
+    if (card.querySelector(".project-video")) {
+      videoObserver.observe(card);
     }
-  }
-
-  window.addEventListener("scroll", onVideoScroll);
-  window.addEventListener("resize", onVideoScroll);
-  updateVideoPlayback();
+  });
   
 } else {
   // DESKTOP: Hover-toiminto
