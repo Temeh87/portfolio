@@ -152,42 +152,74 @@ if (isTouchDevice) {
   let hasScrolled = false;
   let initialScrollY = window.scrollY;
   const scrollThreshold = 50; // Pikseliä scrollausta ennen aktivointia
+  let updateTimeout;
 
   const videoObserver = new IntersectionObserver((entries) => {
     // Älä toista videoita ennen kuin käyttäjä on scrollannut tarpeeksi
     if (!hasScrolled) return;
 
-    entries.forEach(entry => {
-      const video = entry.target.querySelector(".project-video");
+    // Debounce: Odota että scrollaus loppuu ennen päivitystä
+    clearTimeout(updateTimeout);
+    updateTimeout = setTimeout(() => {
+      updateActiveVideo();
+    }, 100);
+  }, {
+    threshold: [0, 0.5, 1.0],
+    rootMargin: "-10% 0px -10% 0px"
+  });
+
+  // Valitse video joka on lähimpänä näytön keskikohtaa
+  function updateActiveVideo() {
+    const viewportCenter = window.innerHeight / 2;
+    let closestCard = null;
+    let closestDistance = Infinity;
+
+    projectCards.forEach(card => {
+      const video = card.querySelector(".project-video");
       if (!video) return;
 
-      // Jos kortti on riittävästi näkyvissä
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-        // Pysäytä aiemmin toistava video
-        if (currentlyPlayingVideo && currentlyPlayingVideo !== video) {
-          currentlyPlayingVideo.classList.remove("playing");
-          currentlyPlayingVideo.pause();
-          currentlyPlayingVideo.currentTime = 0;
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(viewportCenter - cardCenter);
+
+      // Kortin pitää olla ainakin osittain näkyvissä
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isVisible && distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    // Toista vain lähimmän kortin video
+    projectCards.forEach(card => {
+      const video = card.querySelector(".project-video");
+      if (!video) return;
+
+      if (card === closestCard && closestCard !== null) {
+        if (currentlyPlayingVideo !== video) {
+          // Pysäytä aiempi video
+          if (currentlyPlayingVideo) {
+            currentlyPlayingVideo.classList.remove("playing");
+            currentlyPlayingVideo.pause();
+            currentlyPlayingVideo.currentTime = 0;
+          }
+          // Toista uusi video
+          video.classList.add("playing");
+          video.play().catch(err => console.log("Video play failed:", err));
+          currentlyPlayingVideo = video;
         }
-        
-        // Toista tämä video
-        video.classList.add("playing");
-        video.play().catch(err => console.log("Video play failed:", err));
-        currentlyPlayingVideo = video;
-      } else {
-        // Kortti ei ole riittävästi näkyvissä
+      } else if (currentlyPlayingVideo === video) {
+        // Pysäytä jos ei ole enää lähin
+        video.classList.remove("playing");
+        video.pause();
+        video.currentTime = 0;
         if (currentlyPlayingVideo === video) {
-          video.classList.remove("playing");
-          video.pause();
-          video.currentTime = 0;
           currentlyPlayingVideo = null;
         }
       }
     });
-  }, {
-    threshold: [0, 0.6, 1.0],
-    rootMargin: "-20% 0px -20% 0px" // Aktivoituu kun kortti on keskellä ruutua
-  });
+  }
 
   projectCards.forEach(card => {
     if (card.querySelector(".project-video")) {
@@ -200,13 +232,7 @@ if (isTouchDevice) {
     const scrolledDistance = Math.abs(window.scrollY - initialScrollY);
     if (scrolledDistance >= scrollThreshold && !hasScrolled) {
       hasScrolled = true;
-      // Tarkista heti mitä videoita pitäisi toistaa
-      videoObserver.disconnect();
-      projectCards.forEach(card => {
-        if (card.querySelector(".project-video")) {
-          videoObserver.observe(card);
-        }
-      });
+      updateActiveVideo();
       window.removeEventListener("scroll", checkScroll);
       window.removeEventListener("touchmove", checkScroll);
     }
