@@ -152,21 +152,6 @@ if (isTouchDevice) {
   let hasScrolled = false;
   let initialScrollY = window.scrollY;
   const scrollThreshold = 50; // Pikseliä scrollausta ennen aktivointia
-  let updateTimeout;
-
-  const videoObserver = new IntersectionObserver((entries) => {
-    // Älä toista videoita ennen kuin käyttäjä on scrollannut tarpeeksi
-    if (!hasScrolled) return;
-
-    // Debounce: Odota että scrollaus loppuu ennen päivitystä
-    clearTimeout(updateTimeout);
-    updateTimeout = setTimeout(() => {
-      updateActiveVideo();
-    }, 100);
-  }, {
-    threshold: [0, 0.5, 1.0],
-    rootMargin: "-10% 0px -10% 0px"
-  });
 
   // Valitse video joka on lähimpänä näytön keskikohtaa
   function updateActiveVideo() {
@@ -204,7 +189,7 @@ if (isTouchDevice) {
             currentlyPlayingVideo.pause();
             currentlyPlayingVideo.currentTime = 0;
           }
-          // Toista uusi video
+          // Näytä ja toista uusi video välittömästi
           video.classList.add("playing");
           video.play().catch(err => console.log("Video play failed:", err));
           currentlyPlayingVideo = video;
@@ -221,11 +206,36 @@ if (isTouchDevice) {
     });
   }
 
+  // Throttle scrollin käsittelyyn - päivitä max 60fps
+  let scrollTicking = false;
+  function onScroll() {
+    if (!hasScrolled) return;
+    
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        updateActiveVideo();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }
+
+  const videoObserver = new IntersectionObserver((entries) => {
+    if (!hasScrolled) return;
+    onScroll(); // Päivitä kun joku kortti tulee/menee näkyvistä
+  }, {
+    threshold: [0, 0.5, 1.0],
+    rootMargin: "-10% 0px -10% 0px"
+  });
+
   projectCards.forEach(card => {
     if (card.querySelector(".project-video")) {
       videoObserver.observe(card);
     }
   });
+
+  window.addEventListener("scroll", onScroll);
+  window.addEventListener("resize", onScroll);
 
   // Aktivoi videon toisto kun on scrollattu riittävästi
   function checkScroll() {
