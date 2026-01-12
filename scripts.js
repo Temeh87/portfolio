@@ -149,8 +149,14 @@ const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 
 if (isTouchDevice) {
   // MOBIILI: Intersection Observer automaattiseen toistoon
   let currentlyPlayingVideo = null;
+  let hasScrolled = false;
+  let initialScrollY = window.scrollY;
+  const scrollThreshold = 50; // Pikseliä scrollausta ennen aktivointia
 
   const videoObserver = new IntersectionObserver((entries) => {
+    // Älä toista videoita ennen kuin käyttäjä on scrollannut tarpeeksi
+    if (!hasScrolled) return;
+
     entries.forEach(entry => {
       const video = entry.target.querySelector(".project-video");
       if (!video) return;
@@ -188,6 +194,26 @@ if (isTouchDevice) {
       videoObserver.observe(card);
     }
   });
+
+  // Aktivoi videon toisto kun on scrollattu riittävästi
+  function checkScroll() {
+    const scrolledDistance = Math.abs(window.scrollY - initialScrollY);
+    if (scrolledDistance >= scrollThreshold && !hasScrolled) {
+      hasScrolled = true;
+      // Tarkista heti mitä videoita pitäisi toistaa
+      videoObserver.disconnect();
+      projectCards.forEach(card => {
+        if (card.querySelector(".project-video")) {
+          videoObserver.observe(card);
+        }
+      });
+      window.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("touchmove", checkScroll);
+    }
+  }
+
+  window.addEventListener("scroll", checkScroll);
+  window.addEventListener("touchmove", checkScroll);
   
 } else {
   // DESKTOP: Hover-toiminto
