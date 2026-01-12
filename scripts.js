@@ -140,8 +140,10 @@ if (backToTopBtn) {
   });
 }
 
-// === Projektikorttien video hover ===
+// === Projektikorttien video hover ja automaattinen toisto ===
 const projectCards = document.querySelectorAll(".project-card");
+
+// Hover-toiminto desktopille
 projectCards.forEach(card => {
   const video = card.querySelector(".project-video");
   if (video) {
@@ -155,3 +157,58 @@ projectCards.forEach(card => {
     });
   }
 });
+
+// Funktio videon toistoon näytön keskikohdan perusteella
+function updateVideoPlayback() {
+  const viewportCenter = window.innerHeight / 2;
+  let closestCard = null;
+  let closestDistance = Infinity;
+  
+  projectCards.forEach(card => {
+    const video = card.querySelector(".project-video");
+    if (!video) return;
+    
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(viewportCenter - cardCenter);
+    
+    // Tarkista että kortti on ainakin osittain näkyvissä
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    if (isVisible && distance < closestDistance) {
+      closestDistance = distance;
+      closestCard = card;
+    }
+  });
+  
+  // Toista vain lähimmän kortin video, pysäytä muut
+  projectCards.forEach(card => {
+    const video = card.querySelector(".project-video");
+    if (!video) return;
+    
+    if (card === closestCard) {
+      video.play().catch(err => console.log("Video play failed:", err));
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+}
+
+// Päivitä videon toisto scrollin ja resizen yhteydessä
+let videoTicking = false;
+function onVideoScroll() {
+  if (!videoTicking) {
+    window.requestAnimationFrame(() => {
+      updateVideoPlayback();
+      videoTicking = false;
+    });
+    videoTicking = true;
+  }
+}
+
+window.addEventListener("scroll", onVideoScroll);
+window.addEventListener("resize", onVideoScroll);
+
+// Käynnistä heti sivun latauksen jälkeen
+updateVideoPlayback();
