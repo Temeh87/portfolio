@@ -140,75 +140,80 @@ if (backToTopBtn) {
   });
 }
 
-// === Projektikorttien video hover ja automaattinen toisto ===
+// === Projektikorttien video automaattinen toisto ===
 const projectCards = document.querySelectorAll(".project-card");
 
-// Hover-toiminto desktopille
-projectCards.forEach(card => {
-  const video = card.querySelector(".project-video");
-  if (video) {
-    card.addEventListener("mouseenter", () => {
-      video.play().catch(err => console.log("Video play failed:", err));
+// Tarkista onko laite kosketusnäytöllinen
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+if (isTouchDevice) {
+  // MOBIILI: Automaattinen toisto näytön keskikohdan perusteella
+  function updateVideoPlayback() {
+    const viewportCenter = window.innerHeight / 2;
+    let closestCard = null;
+    let closestDistance = Infinity;
+    
+    projectCards.forEach(card => {
+      const video = card.querySelector(".project-video");
+      if (!video) return;
+      
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(viewportCenter - cardCenter);
+      
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (isVisible && distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = card;
+      }
     });
     
-    card.addEventListener("mouseleave", () => {
-      video.pause();
-      video.currentTime = 0;
+    projectCards.forEach(card => {
+      const video = card.querySelector(".project-video");
+      if (!video) return;
+      
+      if (card === closestCard) {
+        video.classList.add("playing");
+        video.play().catch(err => console.log("Video play failed:", err));
+      } else {
+        video.classList.remove("playing");
+        video.pause();
+        video.currentTime = 0;
+      }
     });
   }
-});
 
-// Funktio videon toistoon näytön keskikohdan perusteella
-function updateVideoPlayback() {
-  const viewportCenter = window.innerHeight / 2;
-  let closestCard = null;
-  let closestDistance = Infinity;
-  
-  projectCards.forEach(card => {
-    const video = card.querySelector(".project-video");
-    if (!video) return;
-    
-    const rect = card.getBoundingClientRect();
-    const cardCenter = rect.top + rect.height / 2;
-    const distance = Math.abs(viewportCenter - cardCenter);
-    
-    // Tarkista että kortti on ainakin osittain näkyvissä
-    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-    
-    if (isVisible && distance < closestDistance) {
-      closestDistance = distance;
-      closestCard = card;
+  let videoTicking = false;
+  function onVideoScroll() {
+    if (!videoTicking) {
+      window.requestAnimationFrame(() => {
+        updateVideoPlayback();
+        videoTicking = false;
+      });
+      videoTicking = true;
     }
-  });
+  }
+
+  window.addEventListener("scroll", onVideoScroll);
+  window.addEventListener("resize", onVideoScroll);
+  updateVideoPlayback();
   
-  // Toista vain lähimmän kortin video, pysäytä muut
+} else {
+  // DESKTOP: Hover-toiminto
   projectCards.forEach(card => {
     const video = card.querySelector(".project-video");
-    if (!video) return;
-    
-    if (card === closestCard) {
-      video.play().catch(err => console.log("Video play failed:", err));
-    } else {
-      video.pause();
-      video.currentTime = 0;
+    if (video) {
+      card.addEventListener("mouseenter", () => {
+        video.classList.add("playing");
+        video.play().catch(err => console.log("Video play failed:", err));
+      });
+      
+      card.addEventListener("mouseleave", () => {
+        video.classList.remove("playing");
+        video.pause();
+        video.currentTime = 0;
+      });
     }
   });
 }
-
-// Päivitä videon toisto scrollin ja resizen yhteydessä
-let videoTicking = false;
-function onVideoScroll() {
-  if (!videoTicking) {
-    window.requestAnimationFrame(() => {
-      updateVideoPlayback();
-      videoTicking = false;
-    });
-    videoTicking = true;
-  }
-}
-
-window.addEventListener("scroll", onVideoScroll);
-window.addEventListener("resize", onVideoScroll);
-
-// Käynnistä heti sivun latauksen jälkeen
-updateVideoPlayback();
