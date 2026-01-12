@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     imgElement.classList.add("active");
     
     // Tarkistetaan onko video vai kuva
-    if (imgElement.dataset.video === "true") {
+    if (imgElement.dataset.video === "true" && mainVideo) {
       // Näytetään video, piilotetaan kuva
       mainImage.style.display = "none";
       mainVideo.style.display = "block";
@@ -36,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
       mainVideo.load();
     } else {
       // Näytetään kuva, piilotetaan video
-      mainVideo.style.display = "none";
+      if (mainVideo) {
+        mainVideo.style.display = "none";
+      }
       mainImage.style.display = "block";
       mainImage.src = imgElement.src;
       if (mainVideo) {
@@ -137,3 +139,19 @@ if (backToTopBtn) {
     });
   });
 }
+
+// === Projektikorttien video hover ===
+const projectCards = document.querySelectorAll(".project-card");
+projectCards.forEach(card => {
+  const video = card.querySelector(".project-video");
+  if (video) {
+    card.addEventListener("mouseenter", () => {
+      video.play().catch(err => console.log("Video play failed:", err));
+    });
+    
+    card.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  }
+});
