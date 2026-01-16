@@ -1,9 +1,8 @@
-// Odotetaan että sivu latautuu
 document.addEventListener("DOMContentLoaded", () => {
-  // === Smooth scroll navigaatiossa ===
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function(e) {
-      e.preventDefault(); // estetään teleporttaus
+      e.preventDefault();
       const targetId = this.getAttribute("href");
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === Kuvagalleria ===
   let currentImageIndex = 0;
   const thumbnails = document.querySelectorAll(".thumbnail");
   const mainImage = document.getElementById("main-image");
@@ -27,15 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
     thumbnails.forEach(thumb => thumb.classList.remove("active"));
     imgElement.classList.add("active");
     
-    // Tarkistetaan onko video vai kuva
     if (imgElement.dataset.video === "true" && mainVideo) {
-      // Näytetään video, piilotetaan kuva
       mainImage.style.display = "none";
       mainVideo.style.display = "block";
       mainVideo.src = imgElement.src;
       mainVideo.load();
     } else {
-      // Näytetään kuva, piilotetaan video
       if (mainVideo) {
         mainVideo.style.display = "none";
       }
@@ -56,24 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
     showImage(thumbnails[currentImageIndex]);
   }
 
-  // Klikkaamalla pikkukuvaa
   thumbnails.forEach(thumb => {
     thumb.addEventListener("click", () => showImage(thumb));
   });
 
-  // Nuolinapit
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener("click", () => changeImage(-1));
     nextBtn.addEventListener("click", () => changeImage(1));
   }
 
-  // Näppäimistö ← ja →
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") changeImage(-1);
     if (e.key === "ArrowRight") changeImage(1);
   });
 
-  // === Swipe mobiilille ===
   if (mainImage) {
     let startX = 0;
 
@@ -97,9 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// === Navbar scrollin mukaan ===
 let lastScrollY = window.scrollY;
-let threshold = 100; // kuinka paljon pitää liikkua ennen reaktiota
+let threshold = 100;
 let ticking = false;
 
 window.addEventListener("scroll", () => {
@@ -109,9 +99,9 @@ window.addEventListener("scroll", () => {
       let diff = window.scrollY - lastScrollY;
       if (Math.abs(diff) > threshold) {
         if (diff > 0) {
-          navbar.classList.add("hide");   // Scrollataan alas
+          navbar.classList.add("hide");
         } else {
-          navbar.classList.remove("hide"); // Scrollataan ylös
+          navbar.classList.remove("hide");
         }
         lastScrollY = window.scrollY;
       }
@@ -121,7 +111,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// === Takaisin ylös -nappi ===
 const backToTopBtn = document.getElementById("back-to-top");
 if (backToTopBtn) {
   window.addEventListener("scroll", () => {
@@ -140,20 +129,17 @@ if (backToTopBtn) {
   });
 }
 
-// === Projektikorttien video automaattinen toisto ===
 const projectCards = document.querySelectorAll(".project-card");
 
-// Tarkista onko laite kosketusnäytöllinen
 const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 if (isTouchDevice) {
-  // MOBIILI: Intersection Observer automaattiseen toistoon
   let currentlyPlayingVideo = null;
   let hasScrolled = false;
   let initialScrollY = window.scrollY;
-  const scrollThreshold = 50; // Pikseliä scrollausta ennen aktivointia
+  const scrollThreshold = 50;
 
-  // Valitse video joka on lähimpänä näytön keskikohtaa
+
   function updateActiveVideo() {
     const viewportCenter = window.innerHeight / 2;
     let closestCard = null;
@@ -167,7 +153,6 @@ if (isTouchDevice) {
       const cardCenter = rect.top + rect.height / 2;
       const distance = Math.abs(viewportCenter - cardCenter);
 
-      // Kortin pitää olla ainakin osittain näkyvissä
       const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
 
       if (isVisible && distance < closestDistance) {
@@ -176,26 +161,22 @@ if (isTouchDevice) {
       }
     });
 
-    // Toista vain lähimmän kortin video
     projectCards.forEach(card => {
       const video = card.querySelector(".project-video");
       if (!video) return;
 
       if (card === closestCard && closestCard !== null) {
         if (currentlyPlayingVideo !== video) {
-          // Pysäytä aiempi video
           if (currentlyPlayingVideo) {
             currentlyPlayingVideo.classList.remove("playing");
             currentlyPlayingVideo.pause();
             currentlyPlayingVideo.currentTime = 0;
           }
-          // Näytä ja toista uusi video välittömästi
           video.classList.add("playing");
           video.play().catch(err => console.log("Video play failed:", err));
           currentlyPlayingVideo = video;
         }
       } else if (currentlyPlayingVideo === video) {
-        // Pysäytä jos ei ole enää lähin
         video.classList.remove("playing");
         video.pause();
         video.currentTime = 0;
@@ -206,7 +187,6 @@ if (isTouchDevice) {
     });
   }
 
-  // Throttle scrollin käsittelyyn - päivitä max 60fps
   let scrollTicking = false;
   function onScroll() {
     if (!hasScrolled) return;
@@ -222,7 +202,7 @@ if (isTouchDevice) {
 
   const videoObserver = new IntersectionObserver((entries) => {
     if (!hasScrolled) return;
-    onScroll(); // Päivitä kun joku kortti tulee/menee näkyvistä
+    onScroll();
   }, {
     threshold: [0, 0.5, 1.0],
     rootMargin: "-10% 0px -10% 0px"
@@ -237,7 +217,6 @@ if (isTouchDevice) {
   window.addEventListener("scroll", onScroll);
   window.addEventListener("resize", onScroll);
 
-  // Aktivoi videon toisto kun on scrollattu riittävästi
   function checkScroll() {
     const scrolledDistance = Math.abs(window.scrollY - initialScrollY);
     if (scrolledDistance >= scrollThreshold && !hasScrolled) {
@@ -252,7 +231,6 @@ if (isTouchDevice) {
   window.addEventListener("touchmove", checkScroll);
   
 } else {
-  // DESKTOP: Hover-toiminto
   projectCards.forEach(card => {
     const video = card.querySelector(".project-video");
     if (video) {
